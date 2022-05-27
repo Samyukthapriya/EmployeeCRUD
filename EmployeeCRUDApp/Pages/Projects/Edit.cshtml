@@ -1,0 +1,32 @@
+﻿@page "{id}"
+@model EmployeeCRUDApp.Pages.Projects.EditModel
+@{
+}
+<h3>Projects to Edit @Model.Id</h3>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.p_id"></label>
+        <input asp-for="@Model.p_id>" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.p_name"></label>
+        <input asp-for="@Model.p_name>" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.startdate"></label>
+        <input asp-for="@Model.startdate>" class="form-control"/>
+        <div class="form-group">
+        <label asp-for="@Model.enddate"></label>
+        <input asp-for="@Model.enddate>" class="form-control"/>
+    </div>
+    
+    <div class="form-group">
+        <h6 class="text-success">@Model.SuccessMessage</h6>
+        <h6 class="text-danger">@Model.ErrorMessage</h6>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="/Projects/List" class="btn btn-light" role="button">Cancel</a>
+    </div>
+</form>

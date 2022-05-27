@@ -1,0 +1,55 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+    <h4>@Model.ErrorMessage</h4>
+
+@if(User.Identity.IsAuthenticated)
+{
+    <h4 class="display-4">Welcome @HttpContext.User.Identity.Name</h4>
+}
+else
+    {
+        <h4>Please click here to <a href="/Login">Login</a> </h4>
+
+    }
+
+
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="row">
+            <div class="col-md-4 col-xl-4">
+                <div class="card bg-c-blue db-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Employees</h6>
+                        <h2 class="text-end"><i class="fa fa-person float-start"></i><span>@Model.Employeecount</span></h2>
+                        <p class="m-b-0">Active <span class="f-right"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xl-4">
+                <div class="card bg-c-green db-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Projects</h6>
+                        <h2 class="text-end"><i class="fa fa-building float-start"></i><span>@Model.Projectcount</span></h2>
+                        <p class="m-b-0">Active <span class="float-end"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xl-4">
+                <div class="card bg-c-pink db-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Assignments</h6>
+                        <h2 class="text-end"><i class="fa fa-graduation-cap float-start"></i><span>@Model.Assignmentcount</span></h2>
+                        <p class="m-b-0">Completed <span class="float-end">@Model.CompletedAssignmentcount</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+ 
+    

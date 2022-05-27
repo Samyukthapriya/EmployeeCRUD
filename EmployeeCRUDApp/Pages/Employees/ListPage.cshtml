@@ -1,0 +1,68 @@
+﻿@page
+@model EmployeeCRUDApp.Pages.Employees.ListModel
+@{
+}
+<form method="post">
+    <div class="row">
+        <div class="col">
+             <h4 class="text-center">List of Employee</h4>
+        </div>
+        <div class="col-sm-1">
+            <a href="/Employees/AddPage" class="btn btn-outline-info" role="button"><i class="fa fa-add">ADD</i> </a>
+        </div>
+       
+    </div>
+    <div class="row">
+    <div class="col-sm-9"> <input type="text" asp-for="@Model.SearchText" class="form-control" placeholder="search department by name and location" /></div>
+
+<div class="col-sm-1" >
+    <button type="submit" asp-page-handler="search" class="btn btn-outline-primary"><i class="fa fa-search"></i> </button>
+    </div>
+    <div class="col">
+        <button type="clear" asp-page-handler="clear" class="btn btn-outline-secondary"><i class="fa fa-times"></i> </button>
+    </div>
+    <div class="text-success">@Model.SuccessMessage</div>
+         <div class="text-danger">@Model.ErrorMessage</div>
+</div>
+    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Dob</th>
+                <th scope="col">Phonenumber</th>
+               
+                <th scope="col">Pincode</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+            </tr>
+        </thead>
+        <tbody>
+
+    
+         @foreach(var e in @Model.Employees)
+            {
+                <tr>
+                    <td>@e.Id</td>
+                    <td>@e.Name</td>
+                    <td>@e.Gender</td>
+                    
+                    
+                    <td>@e.Dob.ToString("dd-MMM-yyyy")</td>
+                    <td>@e.Phonenumber</td>
+                    <td>@e.Pincode</td>
+                    <td>@e.Address</td>
+                    <td>@e.City</td>
+                     <td><a href="/Employees/Edit/@e.Id" class="btn btn-outline-warning" role="button">
+                    <i class="fa fa-edit"> </i></a>
+                    <a href="/Employees/Delete/@e.Id" class="btn btn-outline-danger" role="button"><i class="fa fa-trash"></i> </a></td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</form>
+               

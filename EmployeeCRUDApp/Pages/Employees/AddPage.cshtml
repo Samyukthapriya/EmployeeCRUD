@@ -1,0 +1,53 @@
+﻿@page
+@model EmployeeCRUDApp.Pages.Employees.AddModel
+@{
+}
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.Name"></label>
+        <input type="text" class="form-control" asp-for="@Model.Name" />
+    </div>
+     <div class=form-check>
+         <div>Gender</div>
+@foreach (var g in Model.Genders)
+{
+    <input type="radio" asp-for="@Model.Gender" value="@g"  />
+    @g
+    <br />
+}</div>
+
+    <div class="form-group">
+        <label asp-for="@Model.Dob"></label>
+        <input class="form-control" asp-for="@Model.Dob" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Phonenumber"></label>
+        <input type="number" class="form-control" asp-for="@Model.Phonenumber" />
+    </div>
+    
+
+    <div class="form-group">
+        <label asp-for="@Model.Pincode"></label>
+        <input type="number" class="form-control" asp-for="@Model.Pincode" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Address"></label>
+        <input type="text" class="form-control" asp-for="@Model.Address" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.City"></label>
+        <input type="text" class="form-control" asp-for="@Model.City" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary ">Submit</button>
+        <a href="/Employees/ListPage" class="btn btn-primary col-sm-3" role="button">Back</a>
+    </div>
+
+    <div class="form-group">
+        <h5 class="text-success">@Model.SuccessMessage</h5>
+        <h5 class="text-success">@Model.ErrorMessage</h5>
+
+    </div>
+
+</form>

@@ -1,0 +1,57 @@
+﻿@page
+@model EmployeeCRUDApp.Pages.Projects.ListModel
+@{
+}
+<form method="post">
+<div class="row">
+    <div class="col-sm-9">
+        <h3 class=text-center> List Of Project</h3>
+    </div>
+     <div class="col-sm-1">
+            <a href="/Projects/Add" class="btn btn-outline-info" role="button"><i class="fa fa-add">ADD</i> </a>
+     </div>
+</div>
+<div class="row">
+    <div class="col-sm-9"> <input type="text" asp-for="@Model.SearchText" class="form-control" placeholder="search project by name " /></div>
+
+<div class="col-sm-1" >
+    <button type="submit" asp-page-handler="search" class="btn btn-outline-primary"><i class="fa fa-search"></i> </button>
+    </div>
+    <div class="col">
+        <button type="clear" asp-page-handler="clear" class="btn btn-outline-secondary"><i class="fa fa-times"></i> </button>
+    </div>
+    <div class="text-success">@Model.SuccessMessage</div>
+         <div class="text-danger">@Model.ErrorMessage</div>
+         <h6 class="text-danger">@Html.ValidationSummary()</h6>
+    </div>
+   
+<table class="table">
+    <thead>
+        <tr>
+           <th scope="col">p_id</th>
+            <th scope="col">p_name</th>
+            <th scope="col">startdate</th>
+            <th scope="col">enddate</th>
+            
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var s in @Model.Projects)
+        {
+            <tr>
+                 <td>@s.p_id</td>
+                <td>@s.p_name</td>
+               
+                <td>@s.startdate</td>
+                <td>@s.enddate</td>
+                 <td><a href="/Projects/Edit/@s.p_id" class="btn btn-outline-warning" role="Button" ><i class="fa fa-edit"></i> </a></td>
+                <td><a href="/Projects/Delete/@s.p_id" class="btn btn-outline-danger" role="Button" ><i class="fa fa-trash"></i> </a></td>
+
+               
+            </tr>
+        }
+    </tbody>
+
+</table>
+</form>
